@@ -80,7 +80,7 @@ export function Navbar() {
           </li>
         </ul>
 
-        <a href={SOCIALS[2].href} target="_blank" rel="noreferrer"
+        <a href={SOCIALS[2]!.href} target="_blank" rel="noreferrer"
           className="hidden rounded-full bg-gradient-gold px-5 py-2 text-sm font-semibold text-primary-foreground transition hover:scale-105 md:inline-block">
           Subscribe
         </a>

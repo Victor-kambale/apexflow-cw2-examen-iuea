@@ -24,7 +24,7 @@ const ITEMS = Array.from({ length: 12 }, (_, i) => {
   const set = [
     { src: hero, cat: "Workspace" }, { src: g1, cat: "Hardware" },
     { src: g3, cat: "Dashboards" }, { src: g2, cat: "People" },
-  ][i % 4];
+  ][i % 4]!;
   return { ...set, id: i, title: `${set.cat} #${i + 1}` };
 });
 const PER_PAGE = 6;
