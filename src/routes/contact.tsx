@@ -8,10 +8,12 @@ import { SOCIALS } from "@/lib/site";
 export const Route = createFileRoute("/contact")({
   head: () => ({
     meta: [
-      { title: "Contact Victor Kambale — ApexFlow" },
-      { name: "description", content: "Send Victor Kambale a message through a validated contact form." },
-      { property: "og:title", content: "Contact Victor Kambale" },
-      { property: "og:description", content: "Get in touch about projects and collaborations." },
+      { title: "Contact — ApexFlow Integrity Network" },
+      { name: "description", content: "Contact Victor Kambale about the ApexFlow anti-scam metrics coursework dashboard." },
+      { property: "og:title", content: "Contact — ApexFlow Integrity Network" },
+      { property: "og:description", content: "Contact Victor Kambale about the ApexFlow anti-scam metrics coursework dashboard." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary" },
     ],
   }),
   component: Contact,

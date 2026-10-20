@@ -7,16 +7,20 @@ import { Reveal } from "@/components/Reveal";
 export const Route = createFileRoute("/faq")({
   head: () => ({
     meta: [
-      { title: "FAQ — How ApexFlow Was Built" },
-      { name: "description", content: "Answers about the tech stack, animations and responsiveness behind ApexFlow." },
-      { property: "og:title", content: "ApexFlow FAQ" },
-      { property: "og:description", content: "How this animated portal was engineered." },
+      { title: "FAQ — ApexFlow Integrity Dashboard" },
+      { name: "description", content: "Answers about ApexFlow simulated feeds, metrics, validation and technology." },
+      { property: "og:title", content: "FAQ — ApexFlow Integrity Dashboard" },
+      { property: "og:description", content: "Answers about ApexFlow simulated feeds, metrics, validation and technology." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary" },
     ],
   }),
   component: FAQ,
 });
 
 const QA = [
+  ["Are the jobs and feeds real?", "No. Opportunity rows and receipt timestamps are simulated. Source buttons open public portals, but the app does not read government APIs."],
+  ["What does 0 spoofed injections mean?", "The dashboard demonstrates that a changed demo payload fails its SHA-256 digest check. It is coursework evidence, not a security certification."],
   ["What stack powers ApexFlow?", "React 19, TypeScript, TanStack Start for routing, Tailwind CSS v4 for styling and Framer Motion for animation."],
   ["Why clsx + tailwind-merge?", "The cn() helper in src/lib/utils.ts joins conditional classes (clsx) and removes conflicting Tailwind classes (tailwind-merge)."],
   ["How are the PowerPoint-style effects made?", "A reusable Reveal component offers Fly, Zoom, Flip, Wipe and Swivel entrances, triggered when content scrolls into view."],

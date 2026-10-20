@@ -10,10 +10,12 @@ import g3 from "@/assets/g3.jpg";
 export const Route = createFileRoute("/gallery")({
   head: () => ({
     meta: [
-      { title: "Gallery — ApexFlow Engineering Captures" },
-      { name: "description", content: "Filterable gallery of engineering captures, dashboards and hardware by Victor Kambale." },
-      { property: "og:title", content: "ApexFlow Gallery" },
-      { property: "og:description", content: "Engineering captures with hover transforms and filters." },
+      { title: "Network Visuals — ApexFlow" },
+      { name: "description", content: "Visual catalog for the ApexFlow simulated global opportunity network." },
+      { property: "og:title", content: "Network Visuals — ApexFlow" },
+      { property: "og:description", content: "Visual catalog for the ApexFlow simulated global opportunity network." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary" },
     ],
   }),
   component: Gallery,
