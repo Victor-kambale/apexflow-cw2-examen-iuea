@@ -7,10 +7,12 @@ import g2 from "@/assets/g2.jpg";
 export const Route = createFileRoute("/about")({
   head: () => ({
     meta: [
-      { title: "About Victor Kambale — ApexFlow" },
-      { name: "description", content: "The IUEA software engineering journey of Victor Kambale, told as an interactive timeline." },
-      { property: "og:title", content: "About Victor Kambale" },
-      { property: "og:description", content: "Interactive timeline of an IUEA software engineering journey." },
+      { title: "Integrity Method — ApexFlow" },
+      { name: "description", content: "How ApexFlow demonstrates payload integrity checks and the limits of simulated anti-scam validation." },
+      { property: "og:title", content: "Integrity Method — ApexFlow" },
+      { property: "og:description", content: "How ApexFlow demonstrates payload integrity checks and the limits of simulated anti-scam validation." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary" },
     ],
   }),
   component: About,
@@ -35,8 +37,8 @@ function About() {
           <img src={g2} alt="Victor coding at night" width={1024} height={1024} className="rounded-3xl border border-gold/30 shadow-glow" />
         </Reveal>
         <Reveal effect="fly" delay={0.2}>
-          <h1 className="font-display text-5xl font-bold">Solutions over <span className="text-gradient">excuses.</span></h1>
-          <p className="mt-6 text-muted-foreground">I'm Victor Kambale, a Software Engineering student at the International University of East Africa. I build fast, accessible, animated web experiences — and teach others to do the same.</p>
+          <h1 className="font-display text-5xl font-bold">Integrity is <span className="text-gradient">not authenticity.</span></h1>
+          <p className="mt-6 text-muted-foreground">ApexFlow hashes each simulated record with SHA-256 and rechecks that digest. A mismatch proves the demo payload changed, but it does not prove an employer or government published it.</p>
         </Reveal>
       </div>
 

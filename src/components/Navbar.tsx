@@ -4,11 +4,12 @@ import { AnimatePresence, motion } from "framer-motion";
 import { ChevronDown, Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { SOCIALS } from "@/lib/site";
+import { Button } from "@/components/ui/button";
 
 const NAV = [
-  { to: "/", label: "Home" },
-  { to: "/about", label: "About" },
-  { to: "/gallery", label: "Gallery" },
+  { to: "/", label: "Dashboard" },
+  { to: "/about", label: "Integrity" },
+  { to: "/gallery", label: "Network" },
   { to: "/faq", label: "FAQ" },
   { to: "/contact", label: "Contact" },
 ] as const;
@@ -34,10 +35,10 @@ export function Navbar() {
       )}
     >
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-5">
-        <Link to="/" className="font-mono text-xl font-bold">
-          <span className="text-gold">&lt;</span>Dev<span className="text-accent">/</span>
+        <Link to="/" className="font-mono text-lg font-bold">
+          <span className="text-gold">&lt;</span>ApexEngine<span className="text-accent">/</span>
           <span className="text-gold">&gt;</span>
-          <span className="ml-2 font-display text-sm text-muted-foreground">ApexFlow</span>
+          <span className="ml-2 hidden font-display text-sm text-muted-foreground lg:inline">ApexFlow</span>
         </Link>
 
         <ul className="hidden items-center gap-1 md:flex">
@@ -54,9 +55,9 @@ export function Navbar() {
             </li>
           ))}
           <li className="relative" onMouseEnter={() => setDrop(true)} onMouseLeave={() => setDrop(false)}>
-            <button className="flex items-center gap-1 rounded-full px-4 py-2 text-sm text-muted-foreground hover:text-foreground">
+            <Button variant="ghost" aria-expanded={drop} onClick={() => setDrop((value) => !value)} onKeyDown={(event) => { if (event.key === "Escape") setDrop(false); }} className="flex items-center gap-1 rounded-full px-4 py-2 text-sm text-muted-foreground hover:text-foreground">
               Connect <ChevronDown className={cn("h-4 w-4 transition", drop && "rotate-180")} />
-            </button>
+            </Button>
             <AnimatePresence>
               {drop && (
                 <motion.ul
@@ -80,14 +81,14 @@ export function Navbar() {
           </li>
         </ul>
 
-        <a href={SOCIALS[2]!.href} target="_blank" rel="noreferrer"
+        <a href={SOCIALS.find((social) => social.label === "YouTube")?.href} target="_blank" rel="noreferrer"
           className="hidden rounded-full bg-gradient-gold px-5 py-2 text-sm font-semibold text-primary-foreground transition hover:scale-105 md:inline-block">
           Subscribe
         </a>
 
-        <button aria-label="Open menu" onClick={() => setOpen(true)} className="md:hidden">
+        <Button variant="ghost" size="icon" aria-label="Open menu" onClick={() => setOpen(true)} className="md:hidden">
           <Menu />
-        </button>
+        </Button>
       </nav>
 
       {/* Mobile slide-and-flip menu from the left */}
@@ -102,7 +103,7 @@ export function Navbar() {
               transition={{ type: "spring", damping: 22 }}
               className="h-full w-4/5 max-w-xs border-r border-gold/20 bg-surface p-6"
             >
-              <button aria-label="Close menu" onClick={() => setOpen(false)} className="mb-8"><X /></button>
+              <Button variant="ghost" size="icon" aria-label="Close menu" onClick={() => setOpen(false)} className="mb-8"><X /></Button>
               {NAV.map((n, i) => (
                 <motion.div key={n.to} initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.05 * i }}>
                   <Link to={n.to} onClick={() => setOpen(false)} className="block py-3 font-display text-2xl" activeProps={{ className: "text-gold" }} activeOptions={{ exact: true }}>
