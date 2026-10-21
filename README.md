@@ -1,29 +1,99 @@
-# Welcome to your Lovable project
+# ApexFlow
 
-This project was built with [Lovable](https://lovable.dev).
+**Global Anti-Scam Metrics & Opportunity Pipeline Network**  
+Victor Kambale · 24/2018/BSSE-S · IUEA
 
-## Build with Lovable
+## Memorize: Shell → Page → Data → Check → View
 
-Open your project in the [Lovable editor](https://lovable.dev) and keep building.
+1. **Shell:** loader, menu and footer surround every page.
+2. **Page:** the URL selects the screen.
+3. **Data:** six sample pipelines define the records.
+4. **Check:** hash a payload, then compare digests.
+5. **View:** display records and respond to controls.
 
-- **Ship faster**: describe what you want to build and Lovable handles the code.
-- **Stay in sync**: connect the project to GitHub and every change made in Lovable is committed straight to your repository.
-- **Full ownership**: this code is yours. Push to your repository and your changes sync back into Lovable, ready for your next prompt.
+## One file, one job
 
-## Development
+| File | Remember |
+| --- | --- |
+| `src/router.tsx` | Creates the TanStack router and query context. |
+| `src/routes/__root.tsx` | Shared shell; `<Outlet />` mounts the current page. |
+| `src/routes/index.tsx` | Dashboard introduction and pipeline view. |
+| `src/components/Navbar.tsx` | `<ApexEngine/>`, navigation and social dropdown. |
+| `src/components/Preloader.tsx` | Timed loading screen and student identity. |
+| `src/components/PipelineDashboard.tsx` | Receive, pause, filter, inspect, refresh, test. |
+| `src/lib/pipeline.ts` | Sources, metrics, SHA-256 and search logic. |
+| `src/components/Footer.tsx` | Identity, links, copyright and scrolling ticker. |
+| `src/lib/site.ts` | Student details and social URLs. |
+| `src/lib/utils.ts` | `cn()` merges conditional styling classes. |
+| `src/styles.css` | Obsidian, gold, emerald tokens and animations. |
+| `src/routes/{about,gallery,faq,contact}.tsx` | Existing Integrity, Network, FAQ and Contact pages. |
+| `src/test/pipeline.test.ts` | Metric, filtering and integrity tests. |
+| `src/test/app-routing.test.tsx` | Confirms `/` matches a page. |
 
-Prefer working locally? You need Node.js and npm — [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
+**Structure:** TanStack file routes replace `src/pages` and `App.tsx`; Tailwind v4 uses `src/styles.css`, not `tailwind.config.js`. Do not edit generated `src/routeTree.gen.ts`.
 
-```sh
-git clone <this-repository-url>
-cd <repository-name>
-npm i
-npm run dev
+## Dashboard: six steps
+
+1. After hydration, create six local sample records.
+2. Serialize each record and hash it with SHA-256.
+3. Compare the digest to the expected digest.
+4. Receive six every five seconds; keep at most 36 records.
+5. Pause stops the timer; refresh adds one record even while paused.
+6. Filter by country and title/source/ID; inspect opens the digest and public source link.
+
+Core idea, shortened:
+
+```ts
+const digest = await sha256(payload);
+const passed = await validateDigest(payload, digest);
 ```
 
-## Built with
+**Integrity ≠ authenticity.** Matching hashes show unchanged demo data, not a trustworthy sender. The spoof test changes the payload and demonstrates rejection. Metrics start at 45,000 requests, six pipelines, zero allowed spoofed injections and 100% demo verification; they are not measured production security results. Jobs and receipt times are simulated, not official vacancies or live APIs.
 
-- TanStack Start
-- TypeScript
-- React
-- Tailwind CSS
+## Rebuild order
+
+1. Start with a Lovable TanStack project; preserve its router bootstrap.
+2. Define theme tokens in `styles.css` and identity in `site.ts`.
+3. Build menu, loader and footer; place them around `<Outlet />`.
+4. Define sources and hash/filter functions in `pipeline.ts`.
+5. Build dashboard controls with `useState`, `useEffect` and `useRef`.
+6. Mount the dashboard in `index.tsx`; retain existing page URLs.
+7. Add page metadata; run tests and try dashboard controls.
+
+Hooks shorthand: **state = screen; effect = timer; ref = counter**. Clean up timers on pause/unmount; never create clock-dependent records during server rendering.
+
+## Lovable Cloud: where the connection comes from
+
+- **Website:** [lovable.dev](https://lovable.dev/). Cloud is already enabled; no separate backend account is needed.
+- **Creation:** enabling Cloud provisions a managed backend. Lovable automatically generates the project URL, publishable key and client configuration; the URL is not manually invented.
+- **Inspect:** open **Cloud / View Backend** for backend features. In the Code editor, inspect `src/integrations/supabase/client.ts` to follow the generated connection.
+- **Configuration:** the client reads `VITE_SUPABASE_URL` and `VITE_SUPABASE_PUBLISHABLE_KEY`. These are generated variable names. `VITE_` means browser-visible configuration.
+- **Safety:** publishable keys are browser-visible; access rules still protect data. Private credentials never belong in browser code or GitHub. Do not edit generated clients or commit `.env`.
+- **Current boundary:** Cloud is connected, but the dashboard does not save records, sign users in or fetch official feeds. Simulation runs locally and resets on reload. Contact only validates locally; it does not deliver messages.
+
+## Run locally
+
+From your own cloned repository:
+
+```sh
+bun install
+bun run dev
+bun run test
+```
+
+Verify: six pipelines → pause → country/search → inspect → refresh → spoof rejection → resume. Try an empty search result too.
+
+## GitHub delivery
+
+Your connected repository receives Lovable changes through automatic two-way sync; no manual push from this workspace is needed. Check **Project settings → Git** for sync status, then open the connected repository to confirm this README and latest changes. The assistant cannot inspect or confirm sync status. Local work must reach the synced branch to appear in Lovable.
+
+## Learning links
+
+- [Lovable Cloud](https://docs.lovable.dev/features/cloud): managed backend setup.
+- [GitHub sync](https://docs.lovable.dev/integrations/github): repository connection and delivery.
+- [React](https://react.dev/learn): components, state and effects.
+- [TanStack Router](https://tanstack.com/router/latest/docs/framework/react/overview): routes and navigation.
+- [Tailwind CSS](https://tailwindcss.com/docs): utilities and theme tokens.
+- [MDN digest](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/digest): SHA-256 in the browser.
+
+© 2026 Victor Kambale. Responsive Web Design · Coursework 2 · Examen Y2S1
