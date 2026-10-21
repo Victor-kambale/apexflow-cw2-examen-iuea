@@ -4,6 +4,7 @@ import { useRef, useState, type FormEvent } from "react";
 import { z } from "zod";
 import { cn } from "@/lib/utils";
 import { SOCIALS } from "@/lib/site";
+import { Button } from "@/components/ui/button";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
@@ -78,8 +79,8 @@ function Contact() {
             {errors[f] && <motion.p initial={{ opacity: 0, y: -4 }} animate={{ opacity: 1, y: 0 }} className="mt-1 text-sm text-destructive">{errors[f]}</motion.p>}
           </div>
         ))}
-        <button className="w-full rounded-full bg-gradient-gold py-3 font-semibold text-primary-foreground transition hover:scale-[1.02]">Send Message</button>
-        {sent && <motion.p initial={{ scale: 0.8, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} className="text-center text-accent">✓ Message validated and sent. Thank you!</motion.p>}
+        <Button type="submit" className="w-full rounded-full bg-gradient-gold py-3 font-semibold text-primary-foreground transition hover:scale-[1.02]">Validate message</Button>
+        {sent && <motion.p initial={{ scale: 0.8, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} className="text-center text-accent">✓ Message validated locally. Not sent.</motion.p>}
       </motion.form>
     </div>
   );
