@@ -1,6 +1,6 @@
 # ApexFlow pivot
-- [ ] Replace protected brand and footer signature.
-- [ ] Build interactive simulated integrity dashboard and six pipelines.
-- [ ] Write comprehensive root rebuild and Cloud learning guide.
-- [ ] Verify tests, routes, and dashboard interactions.
-- [ ] Explain delivery through the already-connected GitHub sync.
+- [x] Replace protected brand and footer signature.
+- [x] Build interactive simulated integrity dashboard and six pipelines.
+- [x] Write concise, memorable root rebuild and Cloud learning guide; no new pages.
+- [x] Verify tests, routes, and dashboard interactions.
+- [x] Explain automatic delivery through connected GitHub; remote sync status is not accessible here.
