@@ -10,8 +10,9 @@ export const SOCIALS = [
   { label: "Portfolio", short: "VK", href: "https://victorkambale.com" },
   { label: "GitHub", short: "GH", href: "https://github.com/Victor-kambale" },
   { label: "YouTube", short: "YT", href: "https://www.youtube.com/channel/UCHh8EsfhjAsNIsdQoxWRd1Q?sub_confirmation=1" },
-  { label: "Twitter / X", short: "X", href: "https://x.com/victorkambale" },
-  { label: "Instagram", short: "IG", href: "https://instagram.com/victorkambale" },
+  { label: "Twitter / X", short: "X", href: "https://x.com/Infovictor1636" },
+  { label: "LinkedIn", short: "IN", href: "https://www.linkedin.com/in/-victorkambale/" },
+  { label: "Instagram", short: "IG", href: "https://www.instagram.com/cathedralebutembobeni/" },
 ];
 
 // Public sample videos (Google CDN) used for autoplay showcases.
