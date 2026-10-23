@@ -32,6 +32,33 @@ Victor Kambale · 24/2018/BSSE-S · IUEA
 
 **Structure:** TanStack file routes replace `src/pages` and `App.tsx`; Tailwind v4 uses `src/styles.css`, not `tailwind.config.js`. Do not edit generated `src/routeTree.gen.ts`.
 
+## Who connects to whom
+
+```text
+router.tsx ──► routeTree.gen.ts (auto) ──► routes/*.tsx
+__root.tsx ──► Preloader + Navbar + <Outlet/> + Footer
+Navbar, Footer, Preloader ──► lib/site.ts (name, ID, socials)
+index.tsx ──► PipelineDashboard ──► lib/pipeline.ts (data, SHA-256, filter)
+every component ──► styles.css tokens + lib/utils.ts cn()
+pipeline.test.ts ──► lib/pipeline.ts
+```
+
+## What was installed and why
+
+| Package | Job |
+| --- | --- |
+| `@tanstack/react-start`, `react-router` | Pages, URLs, server rendering |
+| `@tanstack/react-query` | Data cache in the router context |
+| `tailwindcss` (v4) | Styling from `styles.css` tokens |
+| `framer-motion` | Slide/fade/reveal animations (only package added by hand) |
+| `lucide-react` | Icons |
+| `@radix-ui/*` + `class-variance-authority` | Dialog, dropdown, accordion (shadcn UI) |
+| `clsx` + `tailwind-merge` | `cn()` class merging |
+| `@supabase/supabase-js` | Lovable Cloud client (generated, not used for data yet) |
+| `vitest` | Tests |
+
+Added by hand: `bun add framer-motion`. Everything else came with the template.
+
 ## Dashboard: six steps
 
 1. After hydration, create six local sample records.
@@ -82,6 +109,17 @@ bun run test
 ```
 
 Verify: six pipelines → pause → country/search → inspect → refresh → spoof rejection → resume. Try an empty search result too.
+
+## Vercel: avoid the white 404 page
+
+The build targets Cloudflare by default, so Vercel can show `404 NOT_FOUND`. In Vercel:
+
+1. **Add New → Project →** import this GitHub repo.
+2. Framework preset: **Other**. Build command: `bun run build`. Install: `bun install`.
+3. Environment Variables: the six names from `.env`, plus `NITRO_PRESET` = `vercel`.
+4. Deploy, then open `/`, `/about`, `/faq`.
+
+Simplest alternative: Lovable **Publish** (works with no setup).
 
 ## GitHub delivery
 
