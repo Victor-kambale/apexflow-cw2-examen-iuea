@@ -8,7 +8,7 @@ export const OWNER = {
 
 export const SOCIALS = [
   { label: "Portfolio", short: "VK", href: "https://victorkambale.com" },
-  { label: "GitHub", short: "GH", href: "https://github.com/victorkambale" },
+  { label: "GitHub", short: "GH", href: "https://github.com/Victor-kambale" },
   { label: "YouTube", short: "YT", href: "https://www.youtube.com/channel/UCHh8EsfhjAsNIsdQoxWRd1Q?sub_confirmation=1" },
   { label: "Twitter / X", short: "X", href: "https://x.com/victorkambale" },
   { label: "Instagram", short: "IG", href: "https://instagram.com/victorkambale" },
