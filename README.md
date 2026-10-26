@@ -13,13 +13,15 @@ This guide describes the actual project, not a different React template. All wor
 
 For an exact independent rebuild, download/clone your own connected GitHub repository first. Work in a separate copy so you can compare your rebuilt files with the originals. Keep the existing template configuration; an empty generic React folder is **not** equivalent.
 
+**Step 1 — install (do this before writing any code):**
+
 ```sh
 # Terminal, inside your downloaded project folder:
-bun install
-bun run dev
+npm install
+npm run dev
 ```
 
-Install Bun from [bun.sh](https://bun.sh/docs/installation). Open the folder in [VS Code](https://code.visualstudio.com/). Bun installs the versions recorded in `package.json` / `bun.lock`; the terminal prints your local development address.
+Use **npm** on your Windows PC: it comes with [Node.js](https://nodejs.org/) and is the industry standard employers expect. (`bun` is only a faster alternative used in the Lovable workspace; the same commands work with both — `npm install` = `bun install`, `npm run dev` = `bun run dev`.) Open the folder in [VS Code](https://code.visualstudio.com/). npm installs the versions recorded in `package.json`; the terminal prints your local development address. **Keep `npm run dev` running the whole time you build** — every saved file appears in the browser immediately, so you can check each step as you go.
 
 **First files to keep:** `package.json`, `bun.lock`, `vite.config.ts`, `tsconfig.json`, `bunfig.toml`, `src/start.ts`, `src/server.ts`. These are the starter infrastructure, not page content. Do not manually create `main.tsx`, `App.tsx` or `tailwind.config.js` for this project.
 
@@ -51,7 +53,7 @@ apexflow-cw2-examen-iuea/
 
 ### 3. Create your application files in this exact order
 
-Keep the starter running. Rebuild one layer at a time; never import a file before it exists. For the first checkpoint, leave the starter's root/index/router in place until their replacements are ready.
+**Step 2 — write code, file by file.** `npm run dev` from Step 1 stays running; after each file, save and look at the browser. Rebuild one layer at a time; never import a file before it exists. For the first checkpoint, leave the starter's root/index/router in place until their replacements are ready.
 
 | Order | Create/read | Connects to / what to understand | Check before moving on |
 | --- | --- | --- | --- |
@@ -69,8 +71,15 @@ Keep the starter running. Rebuild one layer at a time; never import a file befor
 | 12 | `src/routes/about.tsx`, `gallery.tsx`, `faq.tsx`, `contact.tsx` | Existing URLs + their UI/data imports | Create each destination before linking to it. |
 | 13 | `src/routes/__root.tsx` | CSS + shared parts + `<Outlet />` | Shared parts wrap the current page; keep `HeadContent` and `Scripts`. |
 | 14 | `src/router.tsx` | Generated route tree + QueryClient → router | Context agrees with `__root.tsx`. |
-| 15 | `src/test/` + `vitest.config.ts` | Logic tests + routing test + shared setup | Run `bun run test`. |
+
+**Step 3 — test (yes, tests come at the end of the build):**
+
+| Order | Create/read | Connects to / what to understand | Check before moving on |
+| --- | --- | --- | --- |
+| 15 | `src/test/` + `vitest.config.ts` | Logic tests + routing test + shared setup | Run `npm run test` — all tests pass. |
 | 16 | `README.md` | Record setup, connections, limitations, deployment | Another person can follow your order. |
+
+**Step 4 — ship:** `npm run build`, then deploy (Vercel section below). You are right: you write the whole application first, then run tests, then build and deploy. If you change code later, re-run `npm run test` and `npm run build` before deploying again.
 
 **Do not write `routeTree.gen.ts`.** The running TanStack plugin discovers files under `routes/` and regenerates it. **Do not rewrite generated Cloud files.** Keep the starter error-reporting helpers too: `start.ts`, `server.ts` and `__root.tsx` already import them.
 
