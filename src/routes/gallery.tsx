@@ -1,11 +1,10 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import { ArrowLeft, ArrowRight } from "lucide-react";
 import { useState } from "react";
 import { cn } from "@/lib/utils";
-import hero from "@/assets/hero.jpg";
-import g1 from "@/assets/g1.jpg";
-import g2 from "@/assets/g2.jpg";
-import g3 from "@/assets/g3.jpg";
+import { Button } from "@/components/ui/button";
+import { filterGallery, GALLERY_CATEGORIES, type GalleryCategory } from "@/lib/gallery";
 
 export const Route = createFileRoute("/gallery")({
   head: () => ({
@@ -21,33 +20,26 @@ export const Route = createFileRoute("/gallery")({
   component: Gallery,
 });
 
-const CATS = ["All", "Workspace", "Hardware", "Dashboards", "People"] as const;
-const ITEMS = Array.from({ length: 12 }, (_, i) => {
-  const set = [
-    { src: hero, cat: "Workspace" }, { src: g1, cat: "Hardware" },
-    { src: g3, cat: "Dashboards" }, { src: g2, cat: "People" },
-  ][i % 4]!;
-  return { ...set, id: i, title: `${set.cat} #${i + 1}` };
-});
 const PER_PAGE = 6;
 
 function Gallery() {
-  const [cat, setCat] = useState<(typeof CATS)[number]>("All");
+  const [cat, setCat] = useState<GalleryCategory>("All");
   const [page, setPage] = useState(0);
-  const list = ITEMS.filter((i) => cat === "All" || i.cat === cat);
+  const reducedMotion = useReducedMotion();
+  const list = filterGallery(cat);
   const pages = Math.max(1, Math.ceil(list.length / PER_PAGE));
   const shown = list.slice(page * PER_PAGE, page * PER_PAGE + PER_PAGE);
 
   return (
     <div className="mx-auto max-w-7xl px-5 pb-20 pt-32">
-      <h1 className="text-center font-display text-5xl font-bold">Engineering <span className="text-gradient">Gallery</span></h1>
-      <div className="mt-8 flex flex-wrap justify-center gap-2">
-        {CATS.map((c) => (
-          <button key={c} onClick={() => { setCat(c); setPage(0); }}
-            className={cn("relative rounded-full px-5 py-2 text-sm transition", cat === c ? "text-primary-foreground" : "text-muted-foreground hover:text-foreground")}>
-            {cat === c && <motion.span layoutId="pill" className="absolute inset-0 rounded-full bg-gradient-gold" />}
-            <span className="relative">{c}</span>
-          </button>
+      <p className="text-center font-mono text-xs text-accent">APEXFLOW / NETWORK VISUALS</p>
+      <h1 className="mt-4 text-center font-display text-4xl font-bold sm:text-5xl">Engineering <span className="text-gradient">Gallery</span></h1>
+      <div aria-label="Gallery categories" className="mt-8 flex flex-wrap justify-center gap-2">
+        {GALLERY_CATEGORIES.map((c) => (
+          <Button key={c} variant={cat === c ? "default" : "ghost"} aria-pressed={cat === c} onClick={() => { setCat(c); setPage(0); }}
+            className={cn("relative px-4", cat !== c && "text-muted-foreground")}>
+            {c}
+          </Button>
         ))}
       </div>
 
@@ -55,25 +47,23 @@ function Gallery() {
         <AnimatePresence mode="popLayout">
           {shown.map((it, i) => (
             <motion.figure key={it.id} layout
-              initial={{ opacity: 0, scale: 0.8, rotateY: 45 }} animate={{ opacity: 1, scale: 1, rotateY: 0 }}
-              exit={{ opacity: 0, scale: 0.8 }} transition={{ delay: i * 0.05 }}
-              className="group relative aspect-[4/3] overflow-hidden rounded-2xl border border-border">
-              <img src={it.src} alt={it.title} loading="lazy" className="h-full w-full object-cover transition duration-700 group-hover:scale-125 group-hover:rotate-2" />
-              <figcaption className="absolute inset-0 flex items-end bg-gradient-to-t from-background/90 to-transparent p-4 opacity-0 transition group-hover:opacity-100">
-                <span className="translate-y-4 font-display text-lg transition group-hover:translate-y-0">{it.title}</span>
+              initial={reducedMotion ? false : { opacity: 0, y: 36, rotateX: 8 }} animate={{ opacity: 1, y: 0, rotateX: 0 }}
+              exit={{ opacity: 0 }} transition={{ duration: reducedMotion ? 0 : 0.5, delay: reducedMotion ? 0 : i * 0.07 }}
+              className="group overflow-hidden rounded-md border border-border bg-card">
+              <div className="aspect-[4/3] overflow-hidden"><img src={it.src} alt={it.alt} loading="lazy" width={1200} height={912} className="h-full w-full object-cover transition duration-700 motion-safe:group-hover:scale-105" /></div>
+              <figcaption className="flex items-center justify-between gap-3 px-4 py-4">
+                <span className="font-display text-base font-semibold">{it.title}</span>
+                <span className="font-mono text-xs text-accent">{it.cat}</span>
               </figcaption>
             </motion.figure>
           ))}
         </AnimatePresence>
       </motion.div>
 
-      <div className="mt-10 flex justify-center gap-2">
-        {Array.from({ length: pages }).map((_, i) => (
-          <button key={i} onClick={() => setPage(i)} aria-label={`Page ${i + 1}`}
-            className={cn("h-10 w-10 rounded-full border font-mono text-sm transition", page === i ? "border-gold bg-gold text-primary-foreground" : "border-border hover:border-gold")}>
-            {i + 1}
-          </button>
-        ))}
+      <div className="mt-10 flex items-center justify-center gap-4">
+        <Button variant="outline" size="icon" title="Previous page" aria-label="Previous page" disabled={page === 0} onClick={() => setPage((value) => value - 1)}><ArrowLeft /></Button>
+        <span aria-live="polite" className="min-w-16 text-center font-mono text-sm text-muted-foreground">{page + 1} / {pages}</span>
+        <Button variant="outline" size="icon" title="Next page" aria-label="Next page" disabled={page + 1 >= pages} onClick={() => setPage((value) => value + 1)}><ArrowRight /></Button>
       </div>
     </div>
   );
