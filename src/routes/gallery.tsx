@@ -50,7 +50,9 @@ function Gallery() {
               initial={reducedMotion ? false : { opacity: 0, y: 36, rotateX: 8 }} animate={{ opacity: 1, y: 0, rotateX: 0 }}
               exit={{ opacity: 0 }} transition={{ duration: reducedMotion ? 0 : 0.5, delay: reducedMotion ? 0 : i * 0.07 }}
               className="group overflow-hidden rounded-md border border-border bg-card">
-              <div className="aspect-[4/3] overflow-hidden"><img src={it.src} alt={it.alt} loading="lazy" width={1200} height={912} className="h-full w-full object-cover transition duration-700 motion-safe:group-hover:scale-105" /></div>
+              <div className="aspect-[4/3] overflow-hidden">
+              <img src={it.src} alt={it.alt} loading="lazy" width={1200} height={912} className="h-full
+              w-full object-cover transition duration-700 motion-safe:group-hover:scale-105" /></div>
               <figcaption className="flex items-center justify-between gap-3 px-4 py-4">
                 <span className="font-display text-base font-semibold">{it.title}</span>
                 <span className="font-mono text-xs text-accent">{it.cat}</span>

@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { OWNER } from "@/lib/site";
 
-// Full-screen loader: spinning gold ring with name + registration ID, fades out after mount.
+// Full-screen loader: spinning gold ring with name + my registration ID, fades out after mount.
 export function Preloader() {
   const [show, setShow] = useState(true);
   useEffect(() => {
@@ -20,7 +20,8 @@ export function Preloader() {
         >
           <div className="relative flex h-72 w-72 items-center justify-center">
             <motion.div
-              className="absolute inset-0 rounded-full border-2 border-transparent border-t-gold border-r-emerald shadow-glow"
+              className="absolute inset-0 rounded-full border-2 border-transparent border-t-gold
+              border-r-emerald shadow-glow"
               animate={{ rotate: 360 }}
               transition={{ repeat: Infinity, duration: 1.2, ease: "linear" }}
             />
@@ -34,9 +35,12 @@ export function Preloader() {
               animate={{ opacity: 1, y: 0 }}
               className="px-8 text-center"
             >
-              <p className="font-display text-2xl font-bold text-gradient">{OWNER.name.toUpperCase()}</p>
+              <p className="font-display text-2xl font-bold text-gradient">
+                {OWNER.name.toUpperCase()}
+              </p>
               <p className="mt-2 font-mono text-xs text-accent">REG ID: {OWNER.regId}</p>
-              <p className="mt-2 text-[10px] uppercase tracking-widest text-muted-foreground">{OWNER.course}</p>
+              <p className="mt-2 text-[10px] uppercase tracking-widest text-muted-foreground">
+              {OWNER.course}</p>
             </motion.div>
           </div>
         </motion.div>

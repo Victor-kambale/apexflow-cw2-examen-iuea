@@ -6,6 +6,7 @@ import dashboard1 from "@/assets/db1.jpg";
 import dashboard2 from "@/assets/db2.jpg";
 import people1 from "@/assets/people1.jpg";
 import people2 from "@/assets/people2.jpg";
+import people3 from "@/assets/people3.jpg";
 
 export const GALLERY_CATEGORIES = ["All", "Workspace", "Hardware", "Dashboards", "People"] as const;
 export type GalleryCategory = (typeof GALLERY_CATEGORIES)[number];
@@ -19,7 +20,9 @@ export const GALLERY_ITEMS = [
   { id: "db-1", src: dashboard1, cat: "Dashboards", title: "Global telemetry", alt: "Desktop analytics display with a world map and charts" },
   { id: "db-2", src: dashboard2, cat: "Dashboards", title: "Operations floor", alt: "Bright operations room with a wall of network analytics displays" },
   { id: "pe-1", src: people1, cat: "People", title: "Engineering together", alt: "Two students collaborating on a laptop and electronics project" },
+  { id: "pe-3", src: people3, cat: "People", title: "Work Smart Elite Victor", alt: "Founder of Consistency Elite Software Engineer Victor Kambale" },
   { id: "pe-2", src: people2, cat: "People", title: "Infrastructure in practice", alt: "Network engineer inspecting a patch panel with a tablet" },
+
 ] as const;
 
 export function filterGallery(category: GalleryCategory) {

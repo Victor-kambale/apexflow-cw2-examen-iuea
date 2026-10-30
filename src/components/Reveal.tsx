@@ -1,12 +1,13 @@
 import { motion } from "framer-motion";
 import type { ReactNode } from "react";
 
-// PowerPoint-style entrance effects triggered on scroll.
+// I have use here the PowerPoint-style entrance effects triggered on scroll.
 const EFFECTS = {
   fly: { initial: { opacity: 0, y: 60 }, animate: { opacity: 1, y: 0 } },
   zoom: { initial: { opacity: 0, scale: 0.7 }, animate: { opacity: 1, scale: 1 } },
   flip: { initial: { opacity: 0, rotateX: 90 }, animate: { opacity: 1, rotateX: 0 } },
-  wipe: { initial: { opacity: 0, clipPath: "inset(0 100% 0 0)" }, animate: { opacity: 1, clipPath: "inset(0 0% 0 0)" } },
+  wipe: { initial: { opacity: 0, clipPath: "inset(0 100% 0 0)" }, animate: { opacity: 1,
+      clipPath: "inset(0 0% 0 0)" } },
   swivel: { initial: { opacity: 0, rotateY: 90 }, animate: { opacity: 1, rotateY: 0 } },
 } as const;
 

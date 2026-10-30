@@ -19,10 +19,12 @@ export const Route = createFileRoute("/about")({
 });
 
 const TIMELINE = [
-  { year: "2018", title: "Joined IUEA", text: "Enrolled in Bachelor of Science in Software Engineering." },
-  { year: "2019", title: "First Full Website", text: "Shipped HTML/CSS/JS sites and learned responsive design." },
-  { year: "2021", title: "React & TypeScript", text: "Moved to component-driven, type-safe engineering." },
-  { year: "2024", title: "YouTube Channel", text: "Started teaching developers through real-world builds." },
+  { year: "2024", title: "Victor Joined IUEA", text: "Enrolled in Bachelor of Science in Software Engineering." },
+  { year: "2025", title: "First Full Website", text: "Shipped HTML/CSS/JS sites and learned responsive design." },
+  { year: "2026", title: "Real World Java, React & TypeScript", text: "Elite Moved to component-driven, type-safe engineering." },
+  { year: "2026", title: "YouTube Channel", text: "Started teaching developers through real-world builds." },
+  { year: "2026", title: "Web Company: victorkambale.com(with only 2 years of experiences)",
+      text: "Build the Impressive Real Web App project to prove that the Small Thing Do It Daily, Create A Massive Result[I Work Smart Not Hard. And I'm Consistency]" },
   { year: "2026", title: "ApexFlow", text: "Coursework 2: a production-grade animated portal." },
 ];
 
