@@ -19,10 +19,10 @@ web cryptography layers for stream authentication, responsive multi-view panels,
 
 **Step 1 — install**
 
-# Install project dependencies
+### Install project dependencies
 npm install
 
-# Run the local development server engine
+### Run the local development server engine
 npm run dev
 
 ## 🏗️ Core Engineering Stack
@@ -37,11 +37,11 @@ npm run dev
 
 ## Build Compilation
 
-# Package optimization bundles and generate production-ready static assets
+### Package optimization bundles and generate production-ready static assets
 npm run build
 
 ## Automation Execution
-# Trigger full continuous-integration logic and structural rendering integrity tests
+### Trigger full continuous-integration logic and structural rendering integrity tests
 npm run test
 
 
