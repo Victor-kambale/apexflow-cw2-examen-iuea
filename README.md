@@ -20,10 +20,13 @@ web cryptography layers for stream authentication, responsive multi-view panels,
 **Step 1 — install**
 
 ### Install project dependencies
+```sh
 npm install
-
+```
 ### Run the local development server engine
+```sh
 npm run dev
+```
 
 ## 🏗️ Core Engineering Stack
 • **Reactive Framework:** React 19 + TypeScript structured with functional data flows and semantic lifecycles.
@@ -38,7 +41,9 @@ npm run dev
 ## Build Compilation
 
 ### Package optimization bundles and generate production-ready static assets
+```sh
 npm run build
+```
 
 ## Automation Execution
 ### Trigger full continuous-integration logic and structural rendering integrity tests
