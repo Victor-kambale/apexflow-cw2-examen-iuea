@@ -59,6 +59,6 @@ npm run test
 
 
 
-© 2026 © 2026 Victor Kambale | Responsive Web Design · Coursework 2 · Examen Y2S1 |
+© 2026 Victor Kambale | Responsive Web Design · Coursework 2 · Examen Y2S1 |
 · International University of East Africa (IUEA) · School of Engineering Sciences. 
 
